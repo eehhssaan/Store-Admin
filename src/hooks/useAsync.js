@@ -1,10 +1,10 @@
-import axios from 'axios';
-import { useEffect, useState, useContext } from 'react';
-import { SidebarContext } from '../context/SidebarContext';
+import axios from "axios";
+import { useEffect, useState, useContext } from "react";
+import { SidebarContext } from "../context/SidebarContext";
 
 const useAsync = (asyncFunction) => {
   const [data, setData] = useState([] || {});
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   const { isUpdate, setIsUpdate } = useContext(SidebarContext);
 
@@ -16,7 +16,7 @@ const useAsync = (asyncFunction) => {
       .then((res) => {
         if (!unmounted) {
           setData(res);
-          setError('');
+          setError("");
           setLoading(false);
         }
       })
@@ -39,7 +39,7 @@ const useAsync = (asyncFunction) => {
 
     return () => {
       unmounted = true;
-      source.cancel('Cancelled in cleanup');
+      source.cancel("Cancelled in cleanup");
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isUpdate]);
